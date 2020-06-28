@@ -1,0 +1,34 @@
+{
+	"name": "epluswindows",
+	"version": "1.0.0",
+	"description": "e+系统",
+	"main": "index.js",
+	"author": "壹加贰联合不动产",
+	"license": "MIT",
+	"devDependencies": {
+		"electron": "^9.0.5",
+		"electron-builder": "^22.7.0"
+	},
+	"scripts": {
+		"start": "electron .",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder"
+	},
+	"build": {
+		"productName": "e+系统",
+		"appId": "com.e+.",
+		"win": {
+			"icon": "static/icon/favicon.ico",
+			"target": "nsis"
+		},
+		"nsis": {
+			"oneClick": false,
+			"perMachine": true,
+			"allowToChangeInstallationDirectory": true,
+			"installerIcon": "static/icon/favicon.ico",
+			"installerHeaderIcon": "static/icon/favicon.ico",
+			"shortcutName": "e+系统"
+		}
+	},
+	"dependencies": {}
+}
