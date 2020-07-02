@@ -1,6 +1,6 @@
 {
 	"name": "epluswindows",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "e+系统",
 	"main": "index.js",
 	"author": "壹加贰联合不动产",
@@ -19,7 +19,11 @@
 		"appId": "com.e+.",
 		"win": {
 			"icon": "static/icon/favicon.ico",
-			"target": "nsis"
+			"target": "nsis",
+			"publish": {
+				"provider": "generic",
+				"url": "http://newerp.my012.com/app"
+			}
 		},
 		"nsis": {
 			"oneClick": false,
@@ -30,5 +34,7 @@
 			"shortcutName": "e+系统"
 		}
 	},
-	"dependencies": {}
+	"dependencies": {
+		"electron-updater": "^4.3.1"
+	}
 }

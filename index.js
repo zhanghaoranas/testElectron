@@ -1,4 +1,5 @@
 const { app, BrowserWindow, Menu, globalShortcut } = require('electron');
+const { autoUpdater } = require("electron-updater")
 const path = require('path');
 
 function createWindow() {
@@ -45,4 +46,5 @@ app.whenReady().then(() => {
 	const menu = Menu.buildFromTemplate(windMenu);
 	Menu.setApplicationMenu(menu);
 	createWindow();
+	autoUpdater.checkForUpdatesAndNotify();
 });
