@@ -1,5 +1,5 @@
 const { app, BrowserWindow, Menu, globalShortcut } = require('electron');
-const { autoUpdater } = require("electron-updater")
+const { autoUpdater } = require('electron-updater');
 const path = require('path');
 
 function createWindow() {
@@ -10,6 +10,9 @@ function createWindow() {
 		icon: path.join(__dirname, 'static/icon/favicon.ico'),
 		show: false,
 		title: 'e+系统',
+		webPreferences: {
+			plugins: true,
+		},
 	});
 	// 设置窗口最大化。
 	win.maximize();
@@ -20,7 +23,7 @@ function createWindow() {
 	let contents = win.webContents;
 	contents
 		.loadURL('http://newerp.my012.com')
-		.then(res => { })
+		.then(res => {})
 		.catch(err => {
 			contents.loadURL('http://newerp.sosozhaofang.com');
 		});
@@ -34,13 +37,21 @@ function createWindow() {
 		win.webContents.reloadIgnoringCache();
 	});
 	// 如果没有打包则可以调用debug；
-	if (!app.isPackaged) {
-		globalShortcut.register('CommandOrControl+Alt+i', function () {
-			win.webContents.openDevTools()
-		});
-	}
+	// if (!app.isPackaged) {
+	globalShortcut.register('CommandOrControl+Alt+i', function () {
+		win.webContents.openDevTools();
+	});
+	// }
 }
-const windMenu = []
+const windMenu = [];
+// 不知道为什么 把插件内嵌到壳子中打包之后加载不了插件。所有就调用系统安装的flash.
+// app.commandLine.appendSwitch('ppapi-flash-path', path.join(__dirname, 'pepflashplayer.dll'));
+try {
+	app.commandLine.appendSwitch('ppapi-flash-path', app.getPath('pepperFlashSystemPlugin'));
+} catch (err) {
+	console.log(err);
+}
+
 app.whenReady().then(() => {
 	// 设置菜单部分
 	const menu = Menu.buildFromTemplate(windMenu);
