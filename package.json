@@ -19,7 +19,14 @@
 		"appId": "com.e+.",
 		"win": {
 			"icon": "static/icon/favicon.ico",
-			"target": "nsis",
+			"target": [
+				{
+					"target": "nsis",
+					"arch": [
+						"ia32"
+					]
+				}
+			],
 			"publish": {
 				"provider": "generic",
 				"url": "http://newerp.my012.com/app"
