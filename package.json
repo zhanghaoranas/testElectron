@@ -6,7 +6,7 @@
 	"author": "壹加贰联合不动产",
 	"license": "MIT",
 	"devDependencies": {
-		"electron": "^9.3.1",
+		"electron": "^9.0.5",
 		"electron-builder": "^22.7.0"
 	},
 	"scripts": {
